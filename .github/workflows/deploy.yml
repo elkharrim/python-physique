@@ -5,117 +5,56 @@
 # Déclenché à chaque push sur la branche main.
 # Construit le livre et le déploie sur GitHub Pages.
 # ============================================================
-
 name: Déployer JupyterBook sur GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:    # déclenchement manuel depuis l'interface GitHub
+    branches: [main]
+  workflow_dispatch:
 
-# Permissions nécessaires pour GitHub Pages
 permissions:
-  contents : read
-  pages    : write
-  id-token : write
+  contents: read
+  pages: write
+  id-token: write
 
-# Éviter les déploiements simultanés
 concurrency:
-  group              : "pages"
-  cancel-in-progress : false
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-
-  # ──────────────────────────────────────────────
-  # Job 1 : Construction du livre
-  # ──────────────────────────────────────────────
   build:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout du dépôt
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configuration de Python 3.11
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
 
-      - name: Installation des dépendances système
+      - name: Installer dépendances
         run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc
+          pip install jupyter-book myst-parser
 
-      - name: Installation des dépendances Python
+      - name: Construire le livre
         run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+          cd $GITHUB_WORKSPACE
+          jupyter-book build .
 
-      - name: Cache des notebooks exécutés
-        uses: actions/cache@v4
-        with:
-          path: .jupyter_cache
-          key: jupyter-cache-${{ hashFiles('notebooks/**/*.ipynb') }}
-          restore-keys: |
-            jupyter-cache-
-
-      - name: Construction du JupyterBook
-        run: |
-          jupyter-book build . --all
-        working-directory: ${{ github.workspace }}
-        env:
-          # Désactiver l'exécution des notebooks coûteux en CI
-          # (utiliser les outputs mis en cache)
-          NB_EXECUTION_MODE: "off"
-
-      - name: Upload de l'artifact Pages
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_build/html"
-          if-no-files-found: error
 
-  # ──────────────────────────────────────────────
-  # Job 2 : Déploiement sur GitHub Pages
-  # ──────────────────────────────────────────────
   deploy:
-    needs     : build
-    runs-on   : ubuntu-latest
-    # Ne déployer que sur push vers main (pas sur les PR)
-    if        : github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-
-    environment:
-      name : github-pages
-      url  : ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Déploiement sur GitHub Pages
-        id  : deployment
-        uses: actions/deploy-pages@v4
-
-  # ──────────────────────────────────────────────
-  # Job 3 : Vérification des liens (hebdomadaire)
-  # ──────────────────────────────────────────────
-  linkcheck:
+    needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'schedule'
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - run: pip install jupyter-book
-      - name: Vérification des liens externes
-        run: |
-          jupyter-book build . --builder linkcheck
-        continue-on-error: true   # ne pas bloquer sur les liens morts
-
-# Planification de la vérification hebdomadaire des liens
-# (décommenter pour activer)
-# on:
-#   schedule:
-#     - cron: "0 9 * * 1"   # tous les lundis à 9h UTC
+      - name: Déployer sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
