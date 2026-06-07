@@ -67,6 +67,7 @@ jobs:
       - name: Construction du JupyterBook
         run: |
           jupyter-book build . --all
+        working-directory: ${{ github.workspace }}
         env:
           # Désactiver l'exécution des notebooks coûteux en CI
           # (utiliser les outputs mis en cache)
@@ -76,6 +77,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_build/html"
+          if-no-files-found: error
 
   # ──────────────────────────────────────────────
   # Job 2 : Déploiement sur GitHub Pages
