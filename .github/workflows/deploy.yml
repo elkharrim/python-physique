@@ -39,9 +39,7 @@ jobs:
 
       - name: Construire le livre
         run: |
-          ls -la
-          cat _config.yml
-          jupyter-book build . --config _config.yml
+          jupyter-book build .
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
