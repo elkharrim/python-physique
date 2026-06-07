@@ -32,14 +32,14 @@ jobs:
 
       - name: Construire le livre
         run: |
-          jupyter-book build .
+          jupyter-book build $GITHUB_WORKSPACE
           echo "Build termine"
-          find . -name "*.html" -path "*/_build/*" | head -5
+          ls $GITHUB_WORKSPACE/_build/html/ || echo "html absent"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "_build/html"
+          path: ${{ github.workspace }}/_build/html
 
   deploy:
     needs: build
