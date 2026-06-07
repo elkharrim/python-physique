@@ -1,0 +1,12 @@
+# Dépendances Binder — sous-ensemble allégé pour démarrage rapide (~2 min)
+# Les bibliothèques lourdes (PyTorch, PySCF) sont exclues intentionnellement
+numpy>=1.26
+scipy>=1.12
+sympy>=1.12
+matplotlib>=3.8
+pandas>=2.1
+astropy>=6.0
+iminuit>=2.25
+uncertainties>=3.1
+ipywidgets>=8.1
+ipympl

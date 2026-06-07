@@ -1,0 +1,30 @@
+# ============================================================
+# requirements.txt — Installation pip pour GitHub Actions
+# Sous-ensemble de environment.yml pour la CI
+# ============================================================
+
+# Construction du livre
+jupyter-book>=1.0
+sphinx-proof
+sphinx-exercise
+sphinx-togglebutton
+sphinxcontrib-bibtex
+myst-parser>=3.0
+
+# Calcul numérique
+numpy>=1.26
+scipy>=1.12
+sympy>=1.12
+matplotlib>=3.8
+
+# Données
+pandas>=2.1
+iminuit>=2.25
+uncertainties>=3.1
+
+# Astro
+astropy>=6.0
+
+# Jupyter
+jupyterlab>=4.1
+ipywidgets>=8.1

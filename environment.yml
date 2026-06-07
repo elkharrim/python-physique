@@ -1,0 +1,106 @@
+# ============================================================
+# Environnement conda — Python pour physiciens
+# ============================================================
+# Création  : conda env create -f environment.yml
+# Activation: conda activate python-physique
+# Mise à jour: conda env update -f environment.yml --prune
+# Export    : conda env export > environment_lock.yml
+# ============================================================
+
+name: python-physique
+
+channels:
+  - conda-forge    # priorité à conda-forge pour les paquets scientifiques
+  - defaults
+
+dependencies:
+  # ── Python ──────────────────────────────────────────────
+  - python=3.11
+
+  # ── Calcul numérique (Rubrique 1) ───────────────────────
+  - numpy>=1.26
+  - scipy>=1.12
+
+  # ── Calcul symbolique (Rubrique 2) ──────────────────────
+  - sympy>=1.12
+
+  # ── Analyse de données (Rubrique 3) ─────────────────────
+  - pandas>=2.1
+
+  # ── Visualisation (Rubrique 4) ──────────────────────────
+  - matplotlib>=3.8
+  - seaborn>=0.13
+
+  # ── Apprentissage automatique (Rubrique 5) ──────────────
+  - scikit-learn>=1.4
+  # PyTorch installé via pip (conda-forge version souvent en retard)
+
+  # ── Calcul haute performance (Rubrique 6) ───────────────
+  - numba>=0.59
+  - mpi4py>=3.1          # nécessite OpenMPI système
+
+  # ── Physique quantique (Rubrique 7) ─────────────────────
+  - qutip>=4.7
+
+  # ── Astronomie (Rubrique 8) ─────────────────────────────
+  - astropy>=6.0
+  - photutils>=1.10
+  - astroquery>=0.4
+
+  # ── Physique spécialisée (Rubrique 9) ───────────────────
+  - MDAnalysis>=2.7
+
+  # ── Formats de données (Rubrique 10) ────────────────────
+  - h5py>=3.10
+  - netcdf4>=1.6
+
+  # ── Reproductibilité (Rubrique 11) ──────────────────────
+  - pytest>=8.0
+  - snakemake>=8.0       # workflow manager
+
+  # ── Environnement Jupyter ────────────────────────────────
+  - jupyterlab>=4.1
+  - jupyterlab-myst      # rendu MyST dans JupyterLab
+  - ipywidgets>=8.1      # widgets interactifs
+  - ipympl               # matplotlib interactif (%matplotlib widget)
+
+  # ── Construction du livre ────────────────────────────────
+  - jupyter-book>=1.0
+  - sphinx-proof
+  - sphinx-exercise
+  - sphinx-togglebutton
+  - sphinxcontrib-bibtex
+
+  # ── Utilitaires ─────────────────────────────────────────
+  - pip
+  - git
+
+  # ── Dépendances pip (non disponibles sur conda-forge) ───
+  - pip:
+    # Apprentissage automatique
+    - torch>=2.2.0
+    - pennylane>=0.36
+    - iminuit>=2.25
+
+    # Physique quantique
+    - qiskit>=1.0
+    - qiskit-aer>=0.14
+
+    # Physique spécialisée
+    - pyscf>=2.5
+    - plasmapy>=2024.2
+
+    # Formats HEP
+    - uproot>=5.3
+    - awkward>=2.6
+
+    # Incertitudes
+    - uncertainties>=3.1
+
+    # Binder
+    - jupyter-server-proxy
+
+    # Tests et qualité
+    - coverage
+    - black
+    - flake8

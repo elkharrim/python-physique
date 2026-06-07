@@ -1,0 +1,281 @@
+# ============================================================
+# Table des matières — Python pour physiciens
+# Format JupyterBook (_toc.yml)
+# ============================================================
+
+format: jb-book
+root: intro
+
+parts:
+
+  # ──────────────────────────────────────────────
+  # PARTIE 0 : INTRODUCTION
+  # ──────────────────────────────────────────────
+  - caption: "Avant-propos"
+    numbered: false
+    chapters:
+      - file: avant-propos/pourquoi-python
+        title: "Pourquoi Python en physique ?"
+      - file: avant-propos/installation
+        title: "Installation et configuration"
+      - file: avant-propos/guide-lecture
+        title: "Guide de lecture"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 1 : CALCUL NUMÉRIQUE
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 1 — Calcul numérique et simulation"
+    numbered: true
+    chapters:
+      - file: notebooks/r01/01_introduction
+        title: "Introduction et positionnement"
+      - file: notebooks/r01/02_numpy_fondements
+        title: "NumPy — Fondements"
+        sections:
+          - file: notebooks/r01/02a_ndarray
+            title: "Le tableau N-dimensionnel"
+          - file: notebooks/r01/02b_vectorisation
+            title: "Vectorisation et broadcasting"
+          - file: notebooks/r01/02c_linalg
+            title: "Algèbre linéaire"
+      - file: notebooks/r01/03_scipy_solveurs
+        title: "SciPy — Solveurs physiques"
+        sections:
+          - file: notebooks/r01/03a_ode
+            title: "Équations différentielles ordinaires"
+          - file: notebooks/r01/03b_integration
+            title: "Intégration numérique"
+          - file: notebooks/r01/03c_sparse
+            title: "Algèbre creuse"
+      - file: notebooks/r01/04_monte_carlo
+        title: "Simulation Monte-Carlo — Modèle d'Ising"
+      - file: notebooks/r01/05_limites
+        title: "Limites et bonnes pratiques"
+      - file: exercices/r01/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 2 : CALCUL SYMBOLIQUE
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 2 — Calcul symbolique"
+    numbered: true
+    chapters:
+      - file: notebooks/r02/01_introduction
+        title: "Introduction — SymPy"
+      - file: notebooks/r02/02_mecanique_quantique
+        title: "Mécanique quantique — Opérateurs"
+      - file: notebooks/r02/03_lagrange
+        title: "Mécanique analytique — Lagrange"
+      - file: notebooks/r02/04_perturbations
+        title: "Théorie des perturbations"
+      - file: notebooks/r02/05_relativite
+        title: "Relativité générale — Tenseurs"
+      - file: notebooks/r02/06_flux_symbo_num
+        title: "Flux symbolique → numérique"
+      - file: exercices/r02/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 3 : TRAITEMENT DE DONNÉES
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 3 — Traitement et analyse de données"
+    numbered: true
+    chapters:
+      - file: notebooks/r03/01_introduction
+        title: "Introduction — Pipeline expérimental"
+      - file: notebooks/r03/02_nettoyage
+        title: "Nettoyage et structuration"
+      - file: notebooks/r03/03_spectroscopie
+        title: "Ajustement de raies spectrales"
+      - file: notebooks/r03/04_fourier
+        title: "Analyse spectrale et filtrage"
+      - file: notebooks/r03/05_hep
+        title: "Histogrammes HEP — MINUIT"
+      - file: notebooks/r03/06_incertitudes
+        title: "Propagation d'incertitudes"
+      - file: exercices/r03/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 4 : VISUALISATION
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 4 — Visualisation scientifique"
+    numbered: true
+    chapters:
+      - file: notebooks/r04/01_introduction
+        title: "Introduction — Matplotlib"
+      - file: notebooks/r04/02_fonctions_onde
+        title: "Fonctions d'onde quantiques"
+      - file: notebooks/r04/03_structure_bandes
+        title: "Structure de bandes électronique"
+      - file: notebooks/r04/04_champs_vecteurs
+        title: "Champs vectoriels et scalaires"
+      - file: notebooks/r04/05_poincare
+        title: "Section de Poincaré"
+      - file: notebooks/r04/06_publication
+        title: "Figures de publication (PRL)"
+      - file: exercices/r04/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 5 : APPRENTISSAGE AUTOMATIQUE
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 5 — Apprentissage automatique"
+    numbered: true
+    chapters:
+      - file: notebooks/r05/01_introduction
+        title: "Introduction — ML en physique"
+      - file: notebooks/r05/02_potentiel_neuronal
+        title: "Potentiel interatomique neuronal"
+      - file: notebooks/r05/03_pinn
+        title: "Réseaux physiquement informés (PINN)"
+      - file: notebooks/r05/04_phases
+        title: "Classification de phases"
+      - file: notebooks/r05/05_spectroscopie_stellaire
+        title: "Spectroscopie stellaire par ML"
+      - file: exercices/r05/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 6 : CALCUL HAUTE PERFORMANCE
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 6 — Calcul haute performance"
+    numbered: true
+    chapters:
+      - file: notebooks/r06/01_introduction
+        title: "Introduction — Identifier le goulot"
+      - file: notebooks/r06/02_numba
+        title: "Numba JIT — Dynamique moléculaire"
+      - file: notebooks/r06/03_multiprocessing
+        title: "Parallélisme — Monte-Carlo"
+      - file: notebooks/r06/04_mpi
+        title: "MPI distribué — mpi4py"
+      - file: notebooks/r06/05_gpu
+        title: "GPU — CuPy"
+      - file: exercices/r06/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 7 : PHYSIQUE QUANTIQUE
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 7 — Physique quantique et information quantique"
+    numbered: true
+    chapters:
+      - file: notebooks/r07/01_introduction
+        title: "Introduction — QuTiP et Qiskit"
+      - file: notebooks/r07/02_etats_coherents
+        title: "États cohérents et fonction de Wigner"
+      - file: notebooks/r07/03_lindblad
+        title: "Décohérence — Équation de Lindblad"
+      - file: notebooks/r07/04_grover
+        title: "Algorithme de Grover"
+      - file: notebooks/r07/05_vqe
+        title: "Algorithme variationnel VQE"
+      - file: exercices/r07/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 8 : ASTRONOMIE
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 8 — Astronomie et astrophysique"
+    numbered: true
+    chapters:
+      - file: notebooks/r08/01_introduction
+        title: "Introduction — Astropy"
+      - file: notebooks/r08/02_coordonnees
+        title: "Unités et coordonnées célestes"
+      - file: notebooks/r08/03_fits_spectroscopie
+        title: "FITS et spectroscopie stellaire"
+      - file: notebooks/r08/04_cosmologie
+        title: "Diagramme de Hubble"
+      - file: notebooks/r08/05_photometrie
+        title: "Photométrie et détection de sources"
+      - file: exercices/r08/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 9 : PHYSIQUE SPÉCIALISÉE
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 9 — Physique computationnelle spécialisée"
+    numbered: true
+    chapters:
+      - file: notebooks/r09/01_introduction
+        title: "Introduction"
+      - file: notebooks/r09/02_dynamique_moleculaire
+        title: "Dynamique moléculaire — MDAnalysis"
+      - file: notebooks/r09/03_structure_electronique
+        title: "Structure électronique — PySCF"
+      - file: notebooks/r09/04_plasmas
+        title: "Physique des plasmas — PlasmaPy"
+      - file: notebooks/r09/05_phonons
+        title: "Propriétés vibrationnelles — Debye"
+      - file: exercices/r09/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 10 : INTERFACES LEGACY
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 10 — Interfaces legacy et formats"
+    numbered: true
+    chapters:
+      - file: notebooks/r10/01_introduction
+        title: "Introduction — Interopérabilité"
+      - file: notebooks/r10/02_f2py
+        title: "Interface Fortran — f2py"
+      - file: notebooks/r10/03_ctypes
+        title: "Interface C — ctypes"
+      - file: notebooks/r10/04_formats
+        title: "Formats HDF5, NetCDF, ROOT"
+      - file: notebooks/r10/05_workflow_externe
+        title: "Codes externes et parsing"
+      - file: exercices/r10/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PARTIE 11 : REPRODUCTIBILITÉ
+  # ──────────────────────────────────────────────
+  - caption: "Rubrique 11 — Reproductibilité et workflow"
+    numbered: true
+    chapters:
+      - file: notebooks/r11/01_introduction
+        title: "Introduction — La crise de reproductibilité"
+      - file: notebooks/r11/02_environnement
+        title: "Gestion de l'environnement"
+      - file: notebooks/r11/03_graines
+        title: "Reproductibilité stochastique"
+      - file: notebooks/r11/04_snakemake
+        title: "Pipeline Snakemake"
+      - file: notebooks/r11/05_tests
+        title: "Tests unitaires — pytest"
+      - file: exercices/r11/exercices
+        title: "Exercices"
+
+  # ──────────────────────────────────────────────
+  # PROJETS INTÉGRATEURS
+  # ──────────────────────────────────────────────
+  - caption: "Projets intégrateurs"
+    numbered: false
+    chapters:
+      - file: projets/projet_1_ising_complet
+        title: "Projet 1 — Ising 2D : de la simulation à la publication"
+      - file: projets/projet_2_exoplanete
+        title: "Projet 2 — Caractérisation d'une exoplanète"
+      - file: projets/projet_3_ml_phases
+        title: "Projet 3 — ML pour la classification de phases"
+      - file: projets/projet_4_pipeline_complet
+        title: "Projet 4 — Pipeline complet reproductible"
+
+  # ──────────────────────────────────────────────
+  # ANNEXES
+  # ──────────────────────────────────────────────
+  - caption: "Annexes"
+    numbered: false
+    chapters:
+      - file: annexes/installation_complete
+        title: "A — Installation complète (conda/pip)"
+      - file: annexes/comparaison_matlab
+        title: "B — Table de correspondance Python/MATLAB"
+      - file: annexes/ressources
+        title: "C — Ressources et références"
+      - file: annexes/glossaire
+        title: "D — Glossaire physique/informatique"

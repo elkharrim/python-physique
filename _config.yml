@@ -1,0 +1,111 @@
+# ============================================================
+# Configuration JupyterBook
+# Formation : Python pour physiciens
+# ============================================================
+
+title         : "Python pour physiciens"
+author        : "Formation intensive — Doctorat / Recherche"
+logo          : "_static/logo.png"
+copyright     : "2024"
+
+# URL de déploiement GitHub Pages
+# Remplacer par votre URL réelle après déploiement
+# html:
+#   baseurl: "https://votre-username.github.io/python-physique"
+
+# ============================================================
+# PARAMÈTRES D'EXÉCUTION DES NOTEBOOKS
+# ============================================================
+execute:
+  execute_notebooks  : "auto"       # exécuter seulement si non exécuté
+  timeout            : 300          # timeout par cellule (secondes)
+  exclude_patterns   :
+    - "exercices/**"                # les exercices ne sont pas auto-exécutés
+    - "projets/**"
+  allow_errors       : false        # stopper sur erreur (strict)
+  stderr_output      : "show"       # afficher les warnings
+
+# ============================================================
+# PARAMÈTRES HTML
+# ============================================================
+html:
+  use_issues_button      : true
+  use_repository_button  : true
+  use_edit_page_button   : true
+  use_download_button    : true
+  navbar_number_sections : true
+  home_page_in_navbar    : true
+  favicon                : "_static/favicon.ico"
+
+  # Thème Sphinx Book
+  theme_options:
+    repository_url        : "https://github.com/VOTRE_USERNAME/python-physique"
+    use_download_button   : true
+    launch_buttons:
+      binderhub_url       : "https://mybinder.org"
+      colab_url           : "https://colab.research.google.com"
+      thebe               : true    # exécution interactive dans le navigateur
+
+  # Commentaires (optionnel — nécessite un compte Utterances)
+  # comments:
+  #   hypothesis: true
+
+# ============================================================
+# PARAMÈTRES SPHINX
+# ============================================================
+sphinx:
+  extra_extensions:
+    - sphinx_proof           # environnements théorème/preuve
+    - sphinx_exercise        # environnements exercice/solution
+    - sphinx_togglebutton    # boutons révélateurs (solutions)
+    - sphinxcontrib.bibtex   # bibliographie BibTeX
+    - sphinx.ext.mathjax     # équations LaTeX
+
+  config:
+    # MathJax pour le rendu LaTeX
+    mathjax_path: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    mathjax3_config:
+      tex:
+        tags: "ams"
+        macros:
+          bra    : ["\\langle #1 |", 1]
+          ket    : ["| #1 \\rangle", 1]
+          braket : ["\\langle #1 | #2 \\rangle", 2]
+          expect : ["\\langle #1 \\rangle", 1]
+          hbar   : "\\hbar"
+          R      : "\\mathbb{R}"
+          C      : "\\mathbb{C}"
+
+    # Bibtex
+    bibtex_bibfiles: ["references.bib"]
+    bibtex_style: "unsrt"
+
+    # Numérotation des équations par section
+    numfig: true
+
+  # Redirections (si restructuration future)
+  # redirects:
+  #   ancienne-page: nouvelle-page
+
+# ============================================================
+# PARAMÈTRES DE RÉFÉRENTIEL
+# ============================================================
+repository:
+  url           : "https://github.com/VOTRE_USERNAME/python-physique"
+  path_to_book  : "."
+  branch        : "main"
+
+# ============================================================
+# PARAMÈTRES DE LANCEMENT (Binder / Colab)
+# ============================================================
+launch_buttons:
+  binderhub_url     : "https://mybinder.org"
+  colab_url         : "https://colab.research.google.com"
+  notebook_interface: "jupyterlab"
+  thebe             : true
+
+# ============================================================
+# BIBLIOGRAPHIE
+# ============================================================
+bibtex_bibfiles:
+  - references.bib
