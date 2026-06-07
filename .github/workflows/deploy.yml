@@ -39,8 +39,9 @@ jobs:
 
       - name: Construire le livre
         run: |
-          cd $GITHUB_WORKSPACE
-          jupyter-book build .
+          ls -la
+          cat _config.yml
+          jupyter-book build . --config _config.yml
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
