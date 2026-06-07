@@ -28,7 +28,7 @@ jobs:
 
       - name: Installer dependances
         run: |
-          pip install jupyter-book myst-parser
+          pip install "jupyter-book==0.15.1" myst-parser
 
       - name: Construire le livre
         run: |
