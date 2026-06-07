@@ -37,9 +37,13 @@ jobs:
         run: |
           pip install jupyter-book myst-parser
 
-      - name: Construire le livre
+        - name: Construire le livre
         run: |
           jupyter-book build .
+          echo "=== Contenu après build ==="
+          ls -la
+          ls -la _build/ || echo "_build absent"
+          ls -la _build/html/ || echo "_build/html absent"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
