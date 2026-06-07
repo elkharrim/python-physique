@@ -1,11 +1,4 @@
-# ============================================================
-# GitHub Actions — Déploiement automatique JupyterBook
-# Fichier : .github/workflows/deploy.yml
-#
-# Déclenché à chaque push sur la branche main.
-# Construit le livre et le déploie sur GitHub Pages.
-# ============================================================
-name: Déployer JupyterBook sur GitHub Pages
+name: Deploy JupyterBook
 
 on:
   push:
@@ -33,17 +26,15 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Installer dépendances
+      - name: Installer dependances
         run: |
           pip install jupyter-book myst-parser
 
-        - name: Construire le livre
+      - name: Construire le livre
         run: |
           jupyter-book build .
-          echo "=== Contenu après build ==="
-          ls -la
-          ls -la _build/ || echo "_build absent"
-          ls -la _build/html/ || echo "_build/html absent"
+          echo "Build termine"
+          find . -name "*.html" -path "*/_build/*" | head -5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -58,6 +49,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Déployer sur GitHub Pages
+      - name: Deployer
         id: deployment
         uses: actions/deploy-pages@v4
